@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import styled from 'styled-components';
+
 import {Slider, Paper} from '@material-ui/core';
 
 const SliderForm: React.FC = () => {
@@ -29,13 +30,7 @@ const SliderForm: React.FC = () => {
 
 const Container = styled(Paper)`
   width: 100%;
-  padding: ${({theme}) => theme.defaultSpacing};
-  margin-top: 10px;
-  border: 1px solid lightgray;
-
-  &:hover {
-    border-color: black;
-  }
+  padding: 10px;
 `;
 
 const StyledTitle = styled.div`

@@ -21,7 +21,7 @@ const StyledFooter = styled.footer<PropsFooter>`
   align-items: center;
 
   color: white;
-  background: #333;
+  background: #2c3b63;
   height: ${({height}) => height};
 `;
 

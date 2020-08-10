@@ -12,7 +12,6 @@ import {StateAppReducer} from 'reducers/app/types';
 
 import Input from './Input';
 import Error from './Error';
-import Slider from './Slider';
 
 export interface FormValues {
   videoUrl: string;
@@ -73,11 +72,10 @@ const Basic: React.FC = () => {
           validation={validationYoutubeUrl}
         />
         <Input dispatch={dispatch} type="text" name="name" label="File Name" isRequired />
-        <Slider />
 
         {errorMessage && <Error errorMessage={errorMessage} />}
 
-        <StyledButton type="submit" disabled={isSubmitting}>
+        <StyledButton variant="outlined" type="submit" disabled={isSubmitting}>
           Submit
         </StyledButton>
       </StyledForm>
@@ -91,25 +89,32 @@ const Container = styled(Paper)`
   align-items: center;
   width: 100%;
   height: 100%;
-  margin-top: ${({theme}) => theme.defaultSpacing};
+  background: none;
+  max-width: 920px;
   border-radius: 0px;
+
+  margin-bottom: ${({theme}) => theme.defaultSpacing};
 `;
 
-const TitleForm = styled.h2``;
+const TitleForm = styled.h2`
+  font-weight: normal;
+`;
 
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 960px;
+  width: 100%;
+
   padding: 0px 40px;
 `;
 
 const StyledButton = styled(Button)`
   width: 100%;
   margin-top: 20px;
-  color: ${({theme}) => theme.form.colors};
+  color: #fd6e8a;
+  border-color: #fd6e8a;
 `;
 
 const StyledAlert = styled(Alert).attrs({severity: 'error'})``;

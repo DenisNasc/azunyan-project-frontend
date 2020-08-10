@@ -1,12 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Basic from 'components/Home/Form';
+import {useSelector} from 'react-redux';
+
+import Form from 'components/Home/Form';
+import VideoPreview from 'components/Home/VideoPreview';
+import {StateAppReducer} from 'reducers/app/types';
+import {StateStore} from 'store';
 
 const Home: React.FC = () => {
+  const {form} = useSelector<StateStore, StateAppReducer>(({app}) => app);
+
   return (
     <Container>
-      <Basic />
+      <VideoPreview videoUrl={form.videoUrl} />
+      <Form />
     </Container>
   );
 };
@@ -16,7 +24,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  width: 100%;
+  max-width: 920px;
 `;
 
 export default Home;

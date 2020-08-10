@@ -29,13 +29,13 @@ const Header: React.FC<PropsHeader> = ({height}) => {
 
 interface PropsStyledHeader extends PaperProps, React.FC<PropsHeader> {}
 
-const StyledHeader = styled<PropsStyledHeader>(Paper).attrs({elevation: 3, component: 'header'})`
+const StyledHeader = styled<PropsStyledHeader>(Paper).attrs({elevation: 0, component: 'header'})`
   display: flex;
   justify-content: space-around;
   align-items: center;
 
   color: white;
-  background: #333;
+  background: #2c3b63;
   height: ${({height}) => height};
   border-radius: 0px;
 `;

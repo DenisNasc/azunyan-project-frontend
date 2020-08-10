@@ -44,11 +44,14 @@ const Input: React.FC<PropsInput> = ({
     [validateValue]
   );
 
-  const handleValue = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-    const action = actionAppFormChangeValue(name, event.target.value);
-    dispatch(action);
-  }, []);
+  const handleValue = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value);
+      const action = actionAppFormChangeValue(name, event.target.value);
+      dispatch(action);
+    },
+    [dispatch, name]
+  );
 
   return (
     <StyledTextField
@@ -67,6 +70,9 @@ const Input: React.FC<PropsInput> = ({
 
 const StyledTextField = styled(TextField)`
   margin: 10px 0px;
+  && {
+    width: 100%;
+  }
 `;
 
 export default Input;
