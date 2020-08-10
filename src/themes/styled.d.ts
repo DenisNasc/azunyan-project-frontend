@@ -2,11 +2,16 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    borderRadius: string;
-
+    defaultMargin: string;
     colors: {
       main: string;
       secondary: string;
+    };
+    form: {
+      colors: {
+        input: string;
+        button: string;
+      };
     };
   }
 }

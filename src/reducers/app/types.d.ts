@@ -7,6 +7,13 @@ export interface StateAppReducer {
     fail: boolean;
   };
   errorMessage: string;
+  form: {
+    videoUrl: string;
+    name: string;
+    noVideo?: boolean;
+    duration?: number | string;
+    timeStart?: number | string;
+  };
 }
 
 type PayloadAppReducer = {
@@ -15,6 +22,10 @@ type PayloadAppReducer = {
     start?: boolean;
     success?: boolean;
     fail?: boolean;
+  };
+  form?: {
+    key: string;
+    value: string;
   };
 };
 
