@@ -13,12 +13,12 @@ interface PropsHeader {
 const Header: React.FC<PropsHeader> = ({height}) => {
   return (
     <StyledHeader height={height}>
-      <Typography variant="h4">Azunyan Project</Typography>
+      <StyledTitle variant="h4">Azunyan Project</StyledTitle>
       <nav>
         <StyledUl>
           {routes.map(({label, link}) => (
             <li key={label}>
-              <Link to={link}>{label.toUpperCase()}</Link>
+              <StyledLink to={link}>{label.toUpperCase()}</StyledLink>
             </li>
           ))}
         </StyledUl>
@@ -40,12 +40,16 @@ const StyledHeader = styled<PropsStyledHeader>(Paper).attrs({elevation: 3, compo
   border-radius: 0px;
 `;
 
+const StyledTitle = styled(Typography)`
+  font-size: 20px;
+`;
+
 const StyledUl = styled.ul`
   list-style: none;
   display: flex;
 
   li {
-    margin-left: 40px;
+    margin-left: 20px;
   }
   a {
     text-decoration: none;
@@ -54,6 +58,12 @@ const StyledUl = styled.ul`
   }
   a:hover {
     opacity: 0.6;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  && {
+    font-size: 14px;
   }
 `;
 

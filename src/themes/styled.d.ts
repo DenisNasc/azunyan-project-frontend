@@ -2,7 +2,7 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    defaultMargin: string;
+    defaultSpacing: string;
     colors: {
       main: string;
       secondary: string;

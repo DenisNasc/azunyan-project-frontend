@@ -12,6 +12,7 @@ import {StateAppReducer} from 'reducers/app/types';
 
 import Input from './Input';
 import Error from './Error';
+import Slider from './Slider';
 
 export interface FormValues {
   videoUrl: string;
@@ -28,6 +29,12 @@ const Basic: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const validationYoutubeUrl = (value: string) => {
+    const regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w-]+\?v=|embed\/|v\/)?)([\w-]+)(\S+)?$/gm;
+
+    return !!value.match(regex);
+  };
+
   const handleSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
       event.preventDefault();
@@ -36,25 +43,37 @@ const Basic: React.FC = () => {
         setIsSubmitting(true);
         if (!form.videoUrl) throw new TypeError('Insira uma URL');
         if (!form.name) throw new TypeError('Insira um nome para o arquivo');
+        if (!validationYoutubeUrl(form.videoUrl))
+          throw new TypeError(
+            'insira uma URL no formato "https://www.youtube.com/watch?v=VIDEO_ID" '
+          );
+
         await downloadFile('/', {...form});
 
         setErrorMessage('');
         setIsSubmitting(false);
       } catch (error) {
         setErrorMessage(error.message);
+        setIsSubmitting(false);
       }
     },
     [form]
   );
 
   return (
-    <>
+    <Container elevation={0}>
       <TitleForm>Formulário</TitleForm>
       <StyledForm onSubmit={handleSubmit}>
-        <Input dispatch={dispatch} type="text" name="videoUrl" label="Youtube URL" isRequired />
+        <Input
+          dispatch={dispatch}
+          type="text"
+          name="videoUrl"
+          label="Youtube URL"
+          isRequired
+          validation={validationYoutubeUrl}
+        />
         <Input dispatch={dispatch} type="text" name="name" label="File Name" isRequired />
-        <Input dispatch={dispatch} type="text" name="duration" label="Duration" />
-        <Input dispatch={dispatch} type="text" name="timeStart" label="Time start" />
+        <Slider />
 
         {errorMessage && <Error errorMessage={errorMessage} />}
 
@@ -62,15 +81,18 @@ const Basic: React.FC = () => {
           Submit
         </StyledButton>
       </StyledForm>
-    </>
+    </Container>
   );
 };
+
 const Container = styled(Paper)`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: ${({theme}) => theme.defaultSpacing};
+  border-radius: 0px;
 `;
 
 const TitleForm = styled.h2``;

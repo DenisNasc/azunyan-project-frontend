@@ -12,6 +12,7 @@ interface PropsInput {
   name: string;
   isRequired?: boolean;
   dispatch: Dispatch<any>;
+  validation?: any;
 }
 
 const Input: React.FC<PropsInput> = ({
@@ -27,9 +28,10 @@ const Input: React.FC<PropsInput> = ({
   const validateValue = useCallback(
     (v: string) => {
       if (!v && isRequired) {
-        setErrorMessage('Por favor insira um valor');
+        setErrorMessage('Este campo não pode ficar vazio');
         return;
       }
+
       setErrorMessage('');
     },
     [isRequired]

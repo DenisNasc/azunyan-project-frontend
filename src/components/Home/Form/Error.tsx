@@ -11,6 +11,8 @@ const Error: React.FC<PropsError> = ({errorMessage}) => {
   return <StyledAlert>{errorMessage}</StyledAlert>;
 };
 
-const StyledAlert = styled(Alert).attrs({severity: 'error'})``;
+const StyledAlert = styled(Alert).attrs({severity: 'error'})`
+  margin-top: 20px;
+`;
 
 export default Error;

@@ -1,7 +1,7 @@
 import {DefaultTheme} from 'styled-components';
 
 const myTheme: DefaultTheme = {
-  defaultMargin: '20px',
+  defaultSpacing: '20px',
   colors: {
     main: 'red',
     secondary: 'green',

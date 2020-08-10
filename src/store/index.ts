@@ -10,8 +10,8 @@ export interface StateStore {
   app: StateAppReducer;
 }
 
-const enhancer = compose(applyMiddleware(logger));
+// const enhancer = compose(applyMiddleware(logger));
 
-const store = createStore(rootReducer, composeWithDevTools(enhancer));
+const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;

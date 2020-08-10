@@ -10,7 +10,6 @@ const config: AxiosRequestConfig = {
 const instance = axios.create(config);
 
 export const downloadFile = async (url: string, body: FormValues): Promise<void> => {
-  console.log(body);
   const {data} = await instance.post(url, {...body});
   const oi = window.URL.createObjectURL(new Blob([data]));
 
