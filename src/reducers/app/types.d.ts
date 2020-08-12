@@ -10,9 +10,9 @@ export interface StateAppReducer {
   form: {
     videoUrl: string;
     name: string;
-    noVideo?: boolean;
-    duration?: number | string;
-    timeStart?: number | string;
+    noVideo: boolean;
+    timeEnd: string;
+    timeStart: string;
   };
 }
 
@@ -25,10 +25,10 @@ type PayloadAppReducer = {
   };
   form?: {
     key: string;
-    value: string;
+    value: string | boolean;
   };
 };
 
 export interface ActionAppReducer extends Action<string> {
-  payload: PayloadAppReducer;
+  payload?: PayloadAppReducer;
 }

@@ -2,8 +2,6 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {Paper} from '@material-ui/core';
 
-import PlayerController from './PlayerController';
-
 interface PropsVideoPreview {
   videoUrl: string;
 }
@@ -25,17 +23,14 @@ const VideoPreview: React.FC<PropsVideoPreview> = ({videoUrl}) => {
   return (
     <Container elevation={0}>
       {videoId && (
-        <>
-          <StyledIframe
-            width="560"
-            height="315"
-            title="oi"
-            src={`https://www.youtube.com/embed/${videoId}`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          />
-          <PlayerController />
-        </>
+        <StyledIframe
+          width="560"
+          height="315"
+          title="oi"
+          src={`https://www.youtube.com/embed/${videoId}`}
+          frameBorder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        />
       )}
     </Container>
   );
@@ -43,6 +38,12 @@ const VideoPreview: React.FC<PropsVideoPreview> = ({videoUrl}) => {
 
 const Container = styled(Paper)`
   border-radius: 0px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+
+  @media only screen and (max-width: 920px) {
+    padding-top: 0px;
+  }
 `;
 
 const StyledIframe = styled.iframe`
@@ -50,8 +51,6 @@ const StyledIframe = styled.iframe`
   height: 56vw;
   max-width: 920px;
   max-height: 520px;
-
-  margin-top: 20px;
 `;
 
 export default VideoPreview;

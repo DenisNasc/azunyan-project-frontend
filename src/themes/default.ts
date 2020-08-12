@@ -3,14 +3,10 @@ import {DefaultTheme} from 'styled-components';
 const myTheme: DefaultTheme = {
   defaultSpacing: '20px',
   colors: {
-    main: 'red',
-    secondary: 'green',
-  },
-  form: {
-    colors: {
-      input: 'yellow',
-      button: 'orange',
-    },
+    purple: '#3c3344',
+    lightBlue: '#789ab3',
+    red: '#9f4c4c',
+    black: '#3d3d3d',
   },
 };
 

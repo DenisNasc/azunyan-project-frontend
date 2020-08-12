@@ -4,6 +4,8 @@ export const APP_START = 'app:APP_START';
 export const APP_SUCCESS = 'app:APP_SUCCESS';
 export const APP_FAIL = 'app:APP_FAIL';
 
+export const APP_RESET_FORM = 'app:APP_RESET_FORM';
+
 export const APP_FORM_CHANGE_VALUE = 'app:APP_FORM_CHANGE_VALUE';
 
 export const actionAppStart = (): ActionAppReducer => {
@@ -47,7 +49,10 @@ export const actionAppFail = ({errorMessage}: PayloadAppReducer): ActionAppReduc
   return action;
 };
 
-export const actionAppFormChangeValue = (key: string, value: string): ActionAppReducer => {
+export const actionAppFormChangeValue = (
+  key: string,
+  value: string | boolean
+): ActionAppReducer => {
   const action: ActionAppReducer = {
     type: APP_FORM_CHANGE_VALUE,
     payload: {
@@ -56,6 +61,14 @@ export const actionAppFormChangeValue = (key: string, value: string): ActionAppR
         value,
       },
     },
+  };
+
+  return action;
+};
+
+export const actionAppResetForm = (): ActionAppReducer => {
+  const action: ActionAppReducer = {
+    type: APP_RESET_FORM,
   };
 
   return action;

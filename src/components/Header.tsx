@@ -4,7 +4,10 @@ import styled from 'styled-components';
 
 import {Typography, Paper, PaperProps} from '@material-ui/core';
 
-const routes = [{label: 'home', link: '/'}];
+const routes = [
+  {label: 'home', link: '/'},
+  {label: 'about', link: '/about'},
+];
 
 interface PropsHeader {
   height: string;
@@ -13,7 +16,7 @@ interface PropsHeader {
 const Header: React.FC<PropsHeader> = ({height}) => {
   return (
     <StyledHeader height={height}>
-      <StyledTitle variant="h4">Azunyan Project</StyledTitle>
+      <StyledTitle variant="h4">Azunyan</StyledTitle>
       <nav>
         <StyledUl>
           {routes.map(({label, link}) => (
@@ -35,7 +38,7 @@ const StyledHeader = styled<PropsStyledHeader>(Paper).attrs({elevation: 0, compo
   align-items: center;
 
   color: white;
-  background: #2c3b63;
+  background: ${({theme}) => theme.colors.purple};
   height: ${({height}) => height};
   border-radius: 0px;
 `;
@@ -54,7 +57,7 @@ const StyledUl = styled.ul`
   a {
     text-decoration: none;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
   }
   a:hover {
     opacity: 0.6;

@@ -2,13 +2,13 @@ import React, {useState, useCallback} from 'react';
 import styled from 'styled-components';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {Button, Paper} from '@material-ui/core';
-import {Alert} from '@material-ui/lab';
+import {Button, Paper, Checkbox, FormControlLabel} from '@material-ui/core';
 
 import {downloadFile} from 'fetch';
 
 import {StateStore} from 'store';
 import {StateAppReducer} from 'reducers/app/types';
+import {actionAppResetForm, actionAppFormChangeValue} from 'reducers/app/actions';
 
 import Input from './Input';
 import Error from './Error';
@@ -27,12 +27,20 @@ const Basic: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [onlyAudio, setOnlyAudio] = useState(true);
 
   const validationYoutubeUrl = (value: string) => {
     const regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w-]+\?v=|embed\/|v\/)?)([\w-]+)(\S+)?$/gm;
 
     return !!value.match(regex);
   };
+
+  const handleCheckbox = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+      dispatch(actionAppFormChangeValue('noVideo', checked));
+    },
+    [dispatch]
+  );
 
   const handleSubmit = useCallback(
     async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
@@ -59,9 +67,12 @@ const Basic: React.FC = () => {
     [form]
   );
 
+  const handleResetButton = useCallback(() => {
+    dispatch(actionAppResetForm());
+  }, [dispatch]);
+
   return (
     <Container elevation={0}>
-      <TitleForm>Formulário</TitleForm>
       <StyledForm onSubmit={handleSubmit}>
         <Input
           dispatch={dispatch}
@@ -70,14 +81,57 @@ const Basic: React.FC = () => {
           label="Youtube URL"
           isRequired
           validation={validationYoutubeUrl}
+          autoFocus
+          value={form.videoUrl}
         />
-        <Input dispatch={dispatch} type="text" name="name" label="File Name" isRequired />
+        <Input
+          dispatch={dispatch}
+          type="text"
+          name="name"
+          label="File Name"
+          value={form.name}
+          isRequired
+        />
+
+        <StyledFormControlLabel
+          value="start"
+          labelPlacement="start"
+          control={<StyledCheckbox checked={form.noVideo} onChange={handleCheckbox} />}
+          label="Só audio ?"
+        />
+        <ContainerInputs>
+          <Input
+            dispatch={dispatch}
+            type="text"
+            name="timeStart"
+            label="Início"
+            value={form.timeStart}
+            placeholder="00:00"
+          />
+          <Input
+            dispatch={dispatch}
+            type="text"
+            name="timeEnd"
+            label="Final"
+            value={form.timeEnd}
+            placeholder="XX:XX"
+          />
+        </ContainerInputs>
 
         {errorMessage && <Error errorMessage={errorMessage} />}
-
-        <StyledButton variant="outlined" type="submit" disabled={isSubmitting}>
-          Submit
-        </StyledButton>
+        <ContainerButtons>
+          <StyledButton variant="outlined" type="submit" disabled={isSubmitting}>
+            Baixar
+          </StyledButton>
+          <StyledButtonReset
+            variant="outlined"
+            type="button"
+            onClick={handleResetButton}
+            disabled={isSubmitting}
+          >
+            Resetar
+          </StyledButtonReset>
+        </ContainerButtons>
       </StyledForm>
     </Container>
   );
@@ -87,6 +141,7 @@ const Container = styled(Paper)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   background: none;
@@ -94,10 +149,6 @@ const Container = styled(Paper)`
   border-radius: 0px;
 
   margin-bottom: ${({theme}) => theme.defaultSpacing};
-`;
-
-const TitleForm = styled.h2`
-  font-weight: normal;
 `;
 
 const StyledForm = styled.form`
@@ -110,13 +161,45 @@ const StyledForm = styled.form`
   padding: 0px 40px;
 `;
 
-const StyledButton = styled(Button)`
-  width: 100%;
-  margin-top: 20px;
-  color: #fd6e8a;
-  border-color: #fd6e8a;
+const StyledFormControlLabel = styled(FormControlLabel)`
+  align-self: flex-start;
+  margin: 0px;
 `;
 
-const StyledAlert = styled(Alert).attrs({severity: 'error'})``;
+const StyledCheckbox = styled(Checkbox)`
+  && {
+    color: ${({theme}) => theme.colors.purple};
+  }
+`;
+
+const ContainerInputs = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &:last-child {
+    margin-left: 20px;
+  }
+`;
+
+const ContainerButtons = styled.div`
+  width: 100%;
+  display: flex;
+`;
+
+const StyledButton = styled(Button)`
+  width: 75%;
+  margin-top: 20px;
+  margin-right: 20px;
+  color: ${({theme}) => theme.colors.lightBlue};
+  border-color: ${({theme}) => theme.colors.lightBlue};
+`;
+
+const StyledButtonReset = styled(Button)`
+  width: 25%;
+  margin-top: 20px;
+  color: ${({theme}) => theme.colors.red};
+  border-color: ${({theme}) => theme.colors.red};
+`;
 
 export default Basic;

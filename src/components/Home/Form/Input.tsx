@@ -8,11 +8,14 @@ import {Dispatch} from 'redux';
 
 interface PropsInput {
   type?: 'email' | 'password' | 'text';
-  label?: string;
+  label: string;
   name: string;
   isRequired?: boolean;
   dispatch: Dispatch<any>;
   validation?: any;
+  placeholder?: string;
+  autoFocus?: boolean;
+  value: string;
 }
 
 const Input: React.FC<PropsInput> = ({
@@ -21,8 +24,10 @@ const Input: React.FC<PropsInput> = ({
   isRequired = false,
   label,
   dispatch,
+  placeholder,
+  autoFocus = false,
+  value,
 }) => {
-  const [value, setValue] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const validateValue = useCallback(
@@ -44,9 +49,12 @@ const Input: React.FC<PropsInput> = ({
     [validateValue]
   );
 
+  const handleOnFocus = useCallback(() => {
+    setErrorMessage('');
+  }, []);
+
   const handleValue = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.value);
       const action = actionAppFormChangeValue(name, event.target.value);
       dispatch(action);
     },
@@ -59,17 +67,35 @@ const Input: React.FC<PropsInput> = ({
       variant="outlined"
       onChange={handleValue}
       onBlur={handleOnBlur}
+      onFocus={handleOnFocus}
       type={type}
       name={name}
-      label={label || name}
+      label={label}
+      placeholder={placeholder}
       helperText={errorMessage}
       error={!!errorMessage}
+      autoFocus={autoFocus}
     />
   );
 };
 
 const StyledTextField = styled(TextField)`
   margin: 10px 0px;
+  & input:valid + fieldset {
+    border-color: ${({theme}) => theme.colors.purple};
+    border-width: 1px;
+  }
+
+  & input:valid:focus + fieldset {
+    border-color: ${({theme}) => theme.colors.lightBlue};
+    border-width: 1px;
+    border-left-width: 6px;
+  }
+
+  & input:invalid + fieldset {
+    border-color: green;
+  }
+
   && {
     width: 100%;
   }
