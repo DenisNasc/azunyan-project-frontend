@@ -1,8 +1,15 @@
 import axios, {AxiosRequestConfig} from 'axios';
-import {FormValues} from 'components/Home/Form';
+
+interface FormValues {
+  videoUrl: string;
+  name: string;
+  noVideo: boolean;
+  duration: string;
+  startTime: string;
+}
 
 const config: AxiosRequestConfig = {
-  baseURL: 'http://localhost:8082',
+  baseURL: process.env.REACT_APP_SERVER_URL,
   responseType: 'blob',
   headers: {},
 };

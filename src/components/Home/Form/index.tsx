@@ -13,21 +13,12 @@ import {actionAppResetForm, actionAppFormChangeValue} from 'reducers/app/actions
 import Input from './Input';
 import Error from './Error';
 
-export interface FormValues {
-  videoUrl: string;
-  name: string;
-  noVideo?: boolean;
-  duration?: number | string;
-  timeStart?: number | string;
-}
-
 const Basic: React.FC = () => {
   const dispatch = useDispatch();
   const {form} = useSelector<StateStore, StateAppReducer>(({app}) => app);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [onlyAudio, setOnlyAudio] = useState(true);
 
   const validationYoutubeUrl = (value: string) => {
     const regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w-]+\?v=|embed\/|v\/)?)([\w-]+)(\S+)?$/gm;
@@ -103,17 +94,17 @@ const Basic: React.FC = () => {
           <Input
             dispatch={dispatch}
             type="text"
-            name="timeStart"
+            name="startTime"
             label="Início"
-            value={form.timeStart}
+            value={form.startTime}
             placeholder="00:00"
           />
           <Input
             dispatch={dispatch}
             type="text"
-            name="timeEnd"
-            label="Final"
-            value={form.timeEnd}
+            name="duration"
+            label="Duração"
+            value={form.duration}
             placeholder="XX:XX"
           />
         </ContainerInputs>

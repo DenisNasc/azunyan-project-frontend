@@ -12,8 +12,8 @@ export const initialState: StateAppReducer = {
     videoUrl: '',
     name: '',
     noVideo: true,
-    timeEnd: '',
-    timeStart: '',
+    duration: '',
+    startTime: '',
   },
 };
 

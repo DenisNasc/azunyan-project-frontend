@@ -11,8 +11,8 @@ export interface StateAppReducer {
     videoUrl: string;
     name: string;
     noVideo: boolean;
-    timeEnd: string;
-    timeStart: string;
+    duration: string;
+    startTime: string;
   };
 }
 
