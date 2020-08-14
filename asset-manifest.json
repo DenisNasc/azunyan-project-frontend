@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/static/js/main.a82980b2.chunk.js",
-    "main.js.map": "/static/js/main.a82980b2.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.7d5f182a.js",
-    "runtime-main.js.map": "/static/js/runtime-main.7d5f182a.js.map",
-    "static/js/2.cd15ef39.chunk.js": "/static/js/2.cd15ef39.chunk.js",
-    "static/js/2.cd15ef39.chunk.js.map": "/static/js/2.cd15ef39.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.7aea5fe6e6de59f7aed617dac820d997.js": "/precache-manifest.7aea5fe6e6de59f7aed617dac820d997.js",
-    "service-worker.js": "/service-worker.js",
-    "static/js/2.cd15ef39.chunk.js.LICENSE.txt": "/static/js/2.cd15ef39.chunk.js.LICENSE.txt"
+    "main.js": "/azunyan-project-frontend/static/js/main.9542e6c1.chunk.js",
+    "main.js.map": "/azunyan-project-frontend/static/js/main.9542e6c1.chunk.js.map",
+    "runtime-main.js": "/azunyan-project-frontend/static/js/runtime-main.1364cac1.js",
+    "runtime-main.js.map": "/azunyan-project-frontend/static/js/runtime-main.1364cac1.js.map",
+    "static/js/2.12cedc03.chunk.js": "/azunyan-project-frontend/static/js/2.12cedc03.chunk.js",
+    "static/js/2.12cedc03.chunk.js.map": "/azunyan-project-frontend/static/js/2.12cedc03.chunk.js.map",
+    "index.html": "/azunyan-project-frontend/index.html",
+    "precache-manifest.f3fcf4f626272c1665037537d78da0cd.js": "/azunyan-project-frontend/precache-manifest.f3fcf4f626272c1665037537d78da0cd.js",
+    "service-worker.js": "/azunyan-project-frontend/service-worker.js",
+    "static/js/2.12cedc03.chunk.js.LICENSE.txt": "/azunyan-project-frontend/static/js/2.12cedc03.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.7d5f182a.js",
-    "static/js/2.cd15ef39.chunk.js",
-    "static/js/main.a82980b2.chunk.js"
+    "static/js/runtime-main.1364cac1.js",
+    "static/js/2.12cedc03.chunk.js",
+    "static/js/main.9542e6c1.chunk.js"
   ]
 }
