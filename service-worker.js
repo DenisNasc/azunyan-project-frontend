@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/azunyan-project-frontend/precache-manifest.4d28aa6d7f929641068d20f58c88c77d.js"
+  "/azunyan-project-frontend/precache-manifest.f623fd51e4558047b0e568738fa88c2d.js"
 );
 
 self.addEventListener('message', (event) => {
