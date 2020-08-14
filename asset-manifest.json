@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/azunyan-project-frontend/static/js/main.8fea23de.chunk.js",
-    "main.js.map": "/azunyan-project-frontend/static/js/main.8fea23de.chunk.js.map",
+    "main.js": "/azunyan-project-frontend/static/js/main.0986b339.chunk.js",
+    "main.js.map": "/azunyan-project-frontend/static/js/main.0986b339.chunk.js.map",
     "runtime-main.js": "/azunyan-project-frontend/static/js/runtime-main.1364cac1.js",
     "runtime-main.js.map": "/azunyan-project-frontend/static/js/runtime-main.1364cac1.js.map",
     "static/js/2.12cedc03.chunk.js": "/azunyan-project-frontend/static/js/2.12cedc03.chunk.js",
     "static/js/2.12cedc03.chunk.js.map": "/azunyan-project-frontend/static/js/2.12cedc03.chunk.js.map",
     "index.html": "/azunyan-project-frontend/index.html",
-    "precache-manifest.1d718aebac8877945828befafbacad9c.js": "/azunyan-project-frontend/precache-manifest.1d718aebac8877945828befafbacad9c.js",
+    "precache-manifest.4d28aa6d7f929641068d20f58c88c77d.js": "/azunyan-project-frontend/precache-manifest.4d28aa6d7f929641068d20f58c88c77d.js",
     "service-worker.js": "/azunyan-project-frontend/service-worker.js",
     "static/js/2.12cedc03.chunk.js.LICENSE.txt": "/azunyan-project-frontend/static/js/2.12cedc03.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1364cac1.js",
     "static/js/2.12cedc03.chunk.js",
-    "static/js/main.8fea23de.chunk.js"
+    "static/js/main.0986b339.chunk.js"
   ]
 }

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a270c696a7cf457b31ccca8c7ba3bfb3",
+    "revision": "6d95458a58696263fde1d048e1f5d6f6",
     "url": "/azunyan-project-frontend/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/azunyan-project-frontend/static/js/2.12cedc03.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8dce1fc4946bda7f2439",
-    "url": "/azunyan-project-frontend/static/js/main.8fea23de.chunk.js"
+    "revision": "dfca5e284d724c8aeee9",
+    "url": "/azunyan-project-frontend/static/js/main.0986b339.chunk.js"
   },
   {
     "revision": "415505bd26a91b9bb472",
